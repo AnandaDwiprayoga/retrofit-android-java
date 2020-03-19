@@ -77,7 +77,7 @@ public class SplashActivity extends AppCompatActivity {
         if (status){
             Toast.makeText(this, "internet connected", Toast.LENGTH_SHORT).show();
         }else{
-            toogleViewFrame();
+            toogleViewFrame();git
             fragmentTransaction.add(R.id.frameLayout, new NoInternt())
                     .setCustomAnimations(R.anim.slide_in_up,R.anim.slide_in_down,R.anim.slide_out_down, R.anim.slide_out_up)
                     .addToBackStack(null)
@@ -110,17 +110,10 @@ public class SplashActivity extends AppCompatActivity {
                 editor.putString(KEY_VERSIONAPP, response.body().getVersion()).apply();
 
 //                //Todo : 3. Implementasikan Proses Pindah Ke MainActivity Jika Proses getAppVersion() sukses
-
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (response.isSuccessful()){
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                            finish();
-                        }
-                    }
-                }, 3000);
-
+                if (response.isSuccessful()){
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    finish();
+                }
             }
 
             @Override
