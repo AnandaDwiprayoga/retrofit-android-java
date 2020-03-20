@@ -1,6 +1,8 @@
 package id.putraprima.retrofit.api.models;
 
-public class AppVersion {
+import java.io.Serializable;
+
+public class AppVersion implements Serializable {
     String app;
     String version;
 

@@ -28,6 +28,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static id.putraprima.retrofit.ui.MainActivity.KEY_APP;
+
 public class SplashActivity extends AppCompatActivity {
     TextView lblAppName, lblAppTittle, lblAppVersion;
     private SharedPreferences sharedPreferences;
@@ -77,7 +79,7 @@ public class SplashActivity extends AppCompatActivity {
         if (status){
             Toast.makeText(this, "internet connected", Toast.LENGTH_SHORT).show();
         }else{
-            toogleViewFrame();git
+            toogleViewFrame();
             fragmentTransaction.add(R.id.frameLayout, new NoInternt())
                     .setCustomAnimations(R.anim.slide_in_up,R.anim.slide_in_down,R.anim.slide_out_down, R.anim.slide_out_up)
                     .addToBackStack(null)
@@ -111,7 +113,12 @@ public class SplashActivity extends AppCompatActivity {
 
 //                //Todo : 3. Implementasikan Proses Pindah Ke MainActivity Jika Proses getAppVersion() sukses
                 if (response.isSuccessful()){
-                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    AppVersion app = new AppVersion(response.body().getApp(), response.body().getVersion());
+
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    intent.putExtra(KEY_APP,app);
+                    startActivity(intent);
+
                     finish();
                 }
             }
