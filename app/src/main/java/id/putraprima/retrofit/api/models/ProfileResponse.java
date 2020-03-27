@@ -1,6 +1,8 @@
 package id.putraprima.retrofit.api.models;
 
-public class ProfileResponse {
+import java.io.Serializable;
+
+public class ProfileResponse implements Serializable {
     private DataProfile data;
 
     public ProfileResponse(DataProfile data) {

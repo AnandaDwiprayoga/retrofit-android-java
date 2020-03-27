@@ -6,9 +6,12 @@ import id.putraprima.retrofit.api.models.LoginRequest;
 import id.putraprima.retrofit.api.models.LoginResponse;
 import id.putraprima.retrofit.api.models.ProfileResponse;
 import id.putraprima.retrofit.api.models.RegisterRequest;
+import id.putraprima.retrofit.api.models.UpdatePasswordRequest;
+import id.putraprima.retrofit.api.models.UpdateProfileRequest;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
@@ -25,4 +28,9 @@ public interface ApiInterface{
     @GET("/api/auth/me")
     Call<ProfileResponse> getProfile(@Query("token") String token);
 
+    @PATCH("/api/account/profile")
+    Call<ProfileResponse> updateProfile(@Body UpdateProfileRequest updateProfileRequest);
+
+    @PATCH("/api/account/password")
+    Call<Void> updatePassword(@Body UpdatePasswordRequest updatePasswordRequest);
 }

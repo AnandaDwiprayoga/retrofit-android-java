@@ -65,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "Token type : " +  result.getToken_type(), Toast.LENGTH_SHORT).show();
                         Toast.makeText(MainActivity.this, "Expires  : " +  result.getExpires_in() + "", Toast.LENGTH_SHORT).show();
 
+                        finishAffinity();
+
                         Intent intent = new Intent(MainActivity.this, ProfilActivity.class);
                         intent.putExtra(KEY_TOKEN, result.getToken());
                         startActivity(intent);
